@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Train Scheduler</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>   
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script> 
+    <script src="https://www.gstatic.com/firebasejs/5.3.1/firebase.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
+    <script src="assets/javascript/javascript.js"></script>
+</head>
+<body>
+    <div class="container">
+            <div class="jumbotron jumbotron-fluid">
+                <div class="container">
+                    <h1 class="display-4">Train Scheduler</h1>
+                    <p class="lead">Up-to-date information on trains coming and going.</p>
+                </div>
+            </div>
+            <div class="card" id="input">
+                <h5 class="card-header">Current Train Schedule</h5>
+                <div class="card-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="train-name">Train Name: </label>
+                            <input type="text" class="form-control" id="train-name" placeholder="Enter Name of Train">
+                        </div>
+                        <div class="form-group">
+                            <label for="train-destination">Train Destination: </label>
+                            <input type="text" class="form-control" id="train-destination" placeholder="Enter the Destination of the Train">
+                        </div>
+                        <div class="form-group">
+                            <label for="start-time">Train Start Time: </label>
+                            <input type="text" class="form-control" id="start-time" placeholder="HH:mm - military time">
+                        </div>
+                        <div class="form-group">
+                            <label for="frequency">Train Frequency (mins): </label>
+                            <input type="text" class="form-control" id="frequency" placeholder="mm">
+                        </div>
+                        <button type="button" class="btn btn-primary" id="submit">Submit Entry</button>
+                    </form>
+                </div>
+            </div>
+            <div class="card" id="input">
+                <h5 class="card-header">Current Train Schedule</h5>
+                    <div class="card-body">
+                        <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th scope="col">Train Name</th>
+                                    <th scope="col">Destination</th>
+                                    <th scope="col">Frequency (mins)</th>
+                                    <th scope="col">Next Arrival</th>
+                                    <th scope="col">Minutes Away</th>
+                                </tr>
+                                </thead>
+                                <tbody id="table-body">
+                                <!-- <tr>
+                                    <th scope="row">1</th>
+                                    <td>Mark</td>
+                                    <td>Otto</td>
+                                    <td>@mdo</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">2</th>
+                                    <td>Jacob</td>
+                                    <td>Thornton</td>
+                                    <td>@fat</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">3</th>
+                                    <td>Larry</td>
+                                    <td>the Bird</td>
+                                    <td>@twitter</td>
+                                </tr> -->
+                                </tbody>
+                        </table>
+                    </div>
+                </div>
+            
+    </div> <!-- End of Container -->
+    
+</body>
+</html>
