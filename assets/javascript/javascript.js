@@ -44,30 +44,38 @@ $(document).ready(function(){
         nextArrival = calcNextArrival(startTime, frequency);
 
         //Set Values on DB
-        database.ref().set({
-            name: trainName,
-            destination: destination,
-            startTime: startTime,
-            frequency: frequency,
-            nextArrival: nextArrival,
-            minsAway: minsAway
+        database.ref().push({
+            dbname: trainName,
+            dbdestination: destination,
+            dbstartTime: startTime,
+            dbfrequency: frequency,
+            dbnextArrival: nextArrival,
+            dbminsAway: minsAway
         });
+
+        //Clear User Values
+        $("#train-name").val("");
+        $("#train-destination").val("");
+        $("#start-time").val("");
+        $("#frequency").val("");
+
+    });
 
         //Firebase Updates
         database.ref().on("child_added", function(childsnapshot){
             //Create and Append Table Elements
             var newRow = $("<tr>");
-            var NameTrain = $("<td>").text(childsnapshot.val().name);
-            var DestinationTrain = $("<td>").text(childsnapshot.val().destination);
-            var NextArrivalTrain = $("<td>").text(childsnapshot.val().nextArrival);
-            var FrequencyTrain = $("<td>").text(childsnapshot.val().frequency);
-            var MinsAwayTrain = $("<td>").text(childsnapshot.val().minsAway);
+            var NameTrain = $("<td>").text(childsnapshot.val().dbname);
+            var DestinationTrain = $("<td>").text(childsnapshot.val().dbdestination);
+            var FrequencyTrain = $("<td>").text(childsnapshot.val().dbfrequency);
+            var NextArrivalTrain = $("<td>").text(childsnapshot.val().dbnextArrival);
+            var MinsAwayTrain = $("<td>").text(childsnapshot.val().dbminsAway);
 
             //Append All Table Elements
             newRow.append(NameTrain);
             newRow.append(DestinationTrain);
-            newRow.append(NextArrivalTrain);
             newRow.append(FrequencyTrain);
+            newRow.append(NextArrivalTrain);
             newRow.append(MinsAwayTrain);
             
             $("#table-body").prepend(newRow);
@@ -121,11 +129,11 @@ $(document).ready(function(){
             var tMinutesTillTrain = frequency - tRemainder;
             var nextTrain = moment().add(tMinutesTillTrain, "minutes");
             console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"));
-            return nextTrain;
+            return moment(nextTrain).format("hh:mm");
         }
 
 
-    });
+    
 
 
 
